@@ -84,7 +84,10 @@ import java.util.Random;
     	return attributes[5];
     }
     
-    
+    public void		setName(String s)
+    {
+    	name = s;
+    }
     //	TESTING AREA 1
     
     public static void main(String[] args)
