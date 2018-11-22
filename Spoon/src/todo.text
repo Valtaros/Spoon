@@ -1,0 +1,20 @@
+Basics.entity
+-	Entity
+	+resistances
+	+	add resistances
+		+	implement variables
+			+	total resistance
+				+	racial base resistance
+				+	equipment bonus
+				+	effect bonus
+		+	update constructors
+			+	add race bonus
+		+	add get/setMethod
+	+	use resistances
+		+	implement damage reduction through resistance
+	+attributes
+	+	add constructors for random generation
+		+	all
+		+	some(specific)
+		
+	
