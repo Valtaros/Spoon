@@ -1,4 +1,4 @@
-//Basic Class for entities
+//Basic Class for entities test 123
 
 package entity;
 
