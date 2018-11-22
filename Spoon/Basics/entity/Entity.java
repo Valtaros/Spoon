@@ -1,4 +1,4 @@
-//Basic Class for entities test 1234
+//Basic Class for entities asdf
 
 package entity;
 
