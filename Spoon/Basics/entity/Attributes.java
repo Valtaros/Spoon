@@ -1,5 +1,7 @@
 package entity;
 
+import entity.*;
+
 public class Attributes 
 {
 //	Variables
@@ -12,16 +14,17 @@ public class Attributes
 
 //	Constructors
     
-    //empty (all 0)
+    //	empty (all 0)
     Attributes	() {}
     
-    //set all with array
+    //	set all with array
     Attributes	( int[] attributes_n )
     {
     	setAll	( attributes_n );
     	return;
     }
-    //set all with single variables
+    
+    //	set all with single variables
     Attributes	( int constitution_n , int strength_n , int dexterity_n , int intelligence_n , int wisdom_n , int charisma_n)
     {
     	setAll	( constitution_n , strength_n , dexterity_n , intelligence_n , wisdom_n , charisma_n);
