@@ -9,47 +9,57 @@ import java.util.Random;
 //	Variables
 	
   //	Basic Info
-	private String 		name;				// 	name of entity
-    private double		weight;				//	weight of entity
-    private double[]	size;				//	size of entity (height + breadth + width)
+	private String 		name = "unknown";				// 	name of entity
+    private double		weight = 0;						//	weight of entity
+    private double[]	size = new double[] {0, 0, 0};	//	size of entity (height + breadth + width)
   
   //	Attributes
-    private int			attr_constitution;	// 	constitution 
-    private int			attr_strength;		// 	strength 
-    private int			attr_dexterity;		// 	dexterity
-    private int			attr_intelligence;	// 	intelligence
-    private int			attr_wisdom;		// 	wisdom
-    private int			attr_charisma;		// 	charisma
+    private int			attr_constitution = 0;			// 	constitution 
+    private int			attr_strength = 0;				// 	strength 
+    private int			attr_dexterity = 0;				// 	dexterity
+    private int			attr_intelligence = 0;			// 	intelligence
+    private int			attr_wisdom = 0;				// 	wisdom
+    private int			attr_charisma = 0;				// 	charisma
     
-  //	Resistances
-    private int			res_blunt;			//	Blunt 		(physical)
-    private int			res_piercing;		// 	Piercing 	(physical)
-    private int			res_slashing;		//	Slashing 	(physical)
-    private int			res_fire;			//	Fire		(elemental)
-    private int			res_frost;			//	Frost		(elemental)
-    private int			res_shock;			//	Shock		(elemental)
-    private int			res_poison;			//	Poison		(elemental)
-    private int			res_light;			//	Light		(elemental)
-    private int			res_dark;			//	Dark		(elemental)
+  //	Resistances (defensive modifiers)
+    private double		res_blunt = 0;					//	Blunt 		(physical)
+    private double		res_piercing = 0;				// 	Piercing 	(physical)
+    private double		res_slashing = 0;				//	Slashing 	(physical)
+    private double		res_fire = 0;					//	Fire		(elemental)
+    private double		res_frost = 0;					//	Frost		(elemental)
+    private double		res_shock = 0;					//	Shock		(elemental)
+    private double		res_poison = 0;					//	Poison		(elemental)
+    private double		res_light = 0;					//	Light		(elemental)
+    private double		res_dark = 0;					//	Dark		(elemental)
+    
+  //	Attack Bonus (offensive modifiers)
+    private double		bon_blunt = 0;					//	Blunt 		(physical)
+    private double		bon_piercing = 0;				// 	Piercing 	(physical)
+    private double		bon_slashing = 0;				//	Slashing 	(physical)
+    private double		bon_fire = 0;					//	Fire		(elemental)
+    private double		bon_frost = 0;					//	Frost		(elemental)
+    private double		bon_shock = 0;					//	Shock		(elemental)
+    private double		bon_poison = 0;					//	Poison		(elemental)
+    private double		bon_light = 0;					//	Light		(elemental)
+    private double		bon_dark = 0;					//	Dark		(elemental)
     
   //	Status
-    private int			hp_max;				// 	maximum health points
-    private int			hp_cur;				// 	current health points
-    private int			mp_max;				// 	maximum magic points
-    private int			mp_cur;				// 	current magic points
-    private int			st_max;				//	maximum stamina
-    private int			st_cur;				//	current stamina
+    private int			hp_max = 1;						// 	maximum health points
+    private int			hp_cur = 1;						// 	current health points
+    private int			mp_max = 0;						// 	maximum magic points
+    private int			mp_cur = 0;						// 	current magic points
+    private int			st_max = 0;						//	maximum stamina
+    private int			st_cur = 0;						//	current stamina
     
 
 //	Constructors
 
     //	Sets: Basic Info, Attributes, Resistances, specific Status 
-    Entity(String name_n , double weight_n, double[] size_n , int[] attributes_n , int[] resistances_n , int hp_max_n , int hp_cur_n , int mp_max_n , int mp_cur_n, int st_max_n, int st_cur_n)
+    Entity(String name_n , double weight_n, double[] size_n , int[] attributes_n , double[] resistances_n , int hp_max_n , int hp_cur_n , int mp_max_n , int mp_cur_n, int st_max_n, int st_cur_n)
     {
       //	Basic Info
     	name = name_n;
     	weight = weight_n;
-    	size = new double[3];
     	for(int i = 0 ; i < 3 ; i++) 
     	{
     		size[i] = size_n[i];
@@ -74,12 +84,11 @@ import java.util.Random;
     };
     
     //	Sets: Basic Info, Attributes, Resistances, specific Status (Currents = Max)
-    Entity(String name_n , double weight_n, double[] size_n , int[] attributes_n , int[] resistances_n , int hp_max_n , int mp_max_n , int st_max_n)
+    Entity(String name_n , double weight_n, double[] size_n , int[] attributes_n , double[] resistances_n , int hp_max_n , int mp_max_n , int st_max_n)
     {
         //	Basic Info
       	name = name_n;
       	weight = weight_n;
-      	size = new double[3];
       	for(int i = 0 ; i < 3 ; i++) 
       	{
       		size[i] = size_n[i];
@@ -104,46 +113,9 @@ import java.util.Random;
     }
     
     //	Blank Slate, all values 0 or empty;
-    Entity(){
-        //	Basic Info
-      	name = "";
-      	weight = 0;
-      	size = new double[3];
-      	for(int i = 0 ; i < 3 ; i++) 
-      	{
-      		size[i] = 0;
-      	}
-      	
-        //	Attributes
-      	
-      	int[]	attributes_n = new int[6];
-        
-      	for(int i = 0 ; i < 6 ; i++) 
-      	{
-      	attributes_n[i] = 0;
-      	}
-      	
-      	setAttributes(attributes_n);
-        
-      	//   	Resistances
-      	
-      	int[]	resistances_n = new int[9];
-          
-      	for(int i = 0 ; i < 9 ; i++) 
-      	{
-      		resistances_n[i] = 0;
-      	}
-      	
-      	setResistances(resistances_n);
-        //	Status
-      	
-      	hp_max = 0;
-      	hp_cur = 0;
-      	mp_max = 0;
-      	mp_cur = 0;
-      	st_max = 0;
-      	st_cur = 0;
-      	
+    Entity()
+    {
+    	
     }
 
     
@@ -226,9 +198,9 @@ import java.util.Random;
   //	Resistances
     
     //	All
-    public int[] 	getResistances()
+    public double[] 	getResistances()
     {
-    	int[] 	resistances = new int[9];
+    	double[] 	resistances = new double[9];
     	
     	resistances[0] = getResBlunt();
     	resistances[1] = getResPiercing();
@@ -244,57 +216,131 @@ import java.util.Random;
     }
     	
     //	Blunt
-    public int 		getResBlunt() 
+    public double 		getResBlunt() 
     {
     	return 	res_blunt;
     }
 	
     //	Piercing
-    public int 		getResPiercing() 
+    public double 		getResPiercing() 
     {
     	return 	res_piercing;
     }
 	
     //	Slashing
-    public int 		getResSlashing() 
+    public double 		getResSlashing() 
     {
     	return 	res_slashing;
     }
 	
     //	Fire
-    public int 		getResFire() 
+    public double 		getResFire() 
     {
     	return 	res_fire;
     }
 	
     //	Frost
-    public int 		getResFrost() 
+    public double 		getResFrost() 
     {
     	return 	res_frost;
     }
 	
     //	Shock
-    public int 		getResShock() 
+    public double 		getResShock() 
     {
     	return 	res_shock;
     }
 	
     //	Poison
-    public int 		getResPoison() 
+    public double 		getResPoison() 
     {
     	return 	res_poison;
     }
 	
     //	Light
-    public int 		getResLight() 
+    public double 		getResLight() 
     {
     	return 	res_light;
     }
 	
     //	Dark
-    public int 		getResDark() 
+    public double 		getResDark() 
     {
     	return 	res_dark;
+    }
+	
+  //	Attack Bonus
+    
+    //	All
+    public double[] 	getBonus()
+    {
+    	double[] 	bonus = new double[9];
+    	
+    	bonus[0] = getBonBlunt();
+    	bonus[1] = getBonPiercing();
+    	bonus[2] = getBonSlashing();
+    	bonus[3] = getBonFire();
+    	bonus[4] = getBonFrost();
+    	bonus[5] = getBonShock();
+    	bonus[6] = getBonPoison();
+    	bonus[7] = getBonLight();
+    	bonus[8] = getBonDark();
+    	
+    	return	bonus;
+    }
+    	
+    //	Blunt
+    public double 		getBonBlunt() 
+    {
+    	return 	bon_blunt;
+    }
+	
+    //	Piercing
+    public double 		getBonPiercing() 
+    {
+    	return 	bon_piercing;
+    }
+	
+    //	Slashing
+    public double 		getBonSlashing() 
+    {
+    	return 	bon_slashing;
+    }
+	
+    //	Fire
+    public double 		getBonFire() 
+    {
+    	return 	bon_fire;
+    }
+	
+    //	Frost
+    public double 		getBonFrost() 
+    {
+    	return 	bon_frost;
+    }
+	
+    //	Shock
+    public double 		getBonShock() 
+    {
+    	return 	bon_shock;
+    }
+	
+    //	Poison
+    public double 		getBonPoison() 
+    {
+    	return 	bon_poison;
+    }
+	
+    //	Light
+    public double 		getBonLight() 
+    {
+    	return 	bon_light;
+    }
+	
+    //	Dark
+    public double 		getBonDark() 
+    {
+    	return 	bon_dark;
     }
 	
   //	Status
@@ -418,7 +464,7 @@ import java.util.Random;
   //	Resistances
     
     //	All
-    public void		setResistances(int[] resistances_n)
+    public void		setResistances(double[] resistances_n)
     {
     	setResBlunt		(resistances_n[0]);
     	setResPiercing	(resistances_n[1]);
@@ -434,60 +480,134 @@ import java.util.Random;
     }
     
     //	Blunt
-    public void		setResBlunt(int res_blunt_n) 
+    public void		setResBlunt(double res_blunt_n) 
     {
     	res_blunt = res_blunt_n;
     	return;
     }
 
     //	Piercing
-    public void		setResPiercing(int res_piercing_n) 
+    public void		setResPiercing(double res_piercing_n) 
     {
     	res_piercing = res_piercing_n;
     }
 
     //	Slashing
-    public void		setResSlashing(int res_slashing_n) 
+    public void		setResSlashing(double res_slashing_n) 
     {
     	res_slashing = res_slashing_n;
     }
 
     //	Fire
-    public void		setResFire(int res_fire_n) 
+    public void		setResFire(double res_fire_n) 
     {
     	res_fire = res_fire_n;
     }
 
     //	Frost
-    public void		setResFrost(int res_frost_n) 
+    public void		setResFrost(double res_frost_n) 
     {
     	res_frost = res_frost_n;
     }
 
     //	Shock
-    public void		setResShock(int res_shock_n) 
+    public void		setResShock(double res_shock_n) 
     {
     	res_shock = res_shock_n;
     }
 
     //	Poison
-    public void		setResPoison(int res_poison_n) 
+    public void		setResPoison(double res_poison_n) 
     {
     	res_poison = res_poison_n;
     }
 
     //	Light
-    public void		setResLight(int res_light_n) 
+    public void		setResLight(double res_light_n) 
     {
     	res_light = res_light_n;
     }
 
     //	Dark
-    public void		setResDark(int res_dark_n) 
+    public void		setResDark(double res_dark_n) 
     {
     	res_dark = res_dark_n;
     }
 
+  //	Attack Bonus
+    
+    //	All
+    public void		setBonus(double[] bonus_n)
+    {
+    	setBonBlunt		(bonus_n[0]);
+    	setBonPiercing	(bonus_n[1]);
+    	setBonSlashing	(bonus_n[2]);
+    	setBonFire		(bonus_n[3]);
+    	setBonFrost		(bonus_n[4]);
+    	setBonShock		(bonus_n[5]);
+    	setBonPoison	(bonus_n[6]);
+    	setBonLight		(bonus_n[7]);
+    	setBonDark		(bonus_n[8]);
+    	
+    	return;
+    }
+    
+    //	Blunt
+    public void		setBonBlunt(double bon_blunt_n) 
+    {
+    	bon_blunt = bon_blunt_n;
+    	return;
+    }
+
+    //	Piercing
+    public void		setBonPiercing(double bon_piercing_n) 
+    {
+    	bon_piercing = bon_piercing_n;
+    }
+
+    //	Slashing
+    public void		setBonSlashing(double bon_slashing_n) 
+    {
+    	bon_slashing = bon_slashing_n;
+    }
+
+    //	Fire
+    public void		setBonFire(double bon_fire_n) 
+    {
+    	bon_fire = bon_fire_n;
+    }
+
+    //	Frost
+    public void		setBonFrost(double bon_frost_n) 
+    {
+    	bon_frost = bon_frost_n;
+    }
+
+    //	Shock
+    public void		setBonShock(double bon_shock_n) 
+    {
+    	bon_shock = bon_shock_n;
+    }
+
+    //	Poison
+    public void		setBonPoison(double bon_poison_n) 
+    {
+    	bon_poison = bon_poison_n;
+    }
+
+    //	Light
+    public void		setBonLight(double bon_light_n) 
+    {
+    	bon_light = bon_light_n;
+    }
+
+    //	Dark
+    public void		setBonDark(double bon_dark_n) 
+    {
+    	bon_dark = bon_dark_n;
+    }
+    
+    
   //	Status
     
     //	Health, Max
@@ -532,14 +652,14 @@ import java.util.Random;
   //	Fighting
     
     //	Receive Damage
-    public void 	receiveDamage	( int type , int amount )
+    public void 	receiveDamage	( int type , double amount )
     {
-    	int 	damage = amount  - getResistances()[type];
+    	double 	damage = amount  - getResistances()[type];
     	if	( damage > 0 )
     	{
     		if	( hp_cur > damage )
     		{
-    			hp_cur = hp_cur - damage;
+    			hp_cur = hp_cur - (int)damage;
     		}
     		else
     		{
@@ -550,9 +670,9 @@ import java.util.Random;
     }
     
     //	Deal Damage
-    public int 	dealDamage	( int type ) 
+    public double	dealDamage	( int type ) 
     {
-    	int 	damage = getAttrStrength();
+    	int 	damage = getAttrStrength() * (1 + getBon()[type]);
     	return	damage;
     }
     
