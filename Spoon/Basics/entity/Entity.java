@@ -23,7 +23,7 @@ import java.util.Random;
     private Resistances	resistances = new Resistances();
     //	[0] blunt		[3]	fire	[6]	poison
     //	[1] piercing	[4]	frost	[7]	light
-    //	[2]	slashing	[5]	shock	{8]	dark    
+    //	[2]	slashing	[5]	shock	[8]	dark    
   
     //	Attack Bonus (offensive modifiers)
     private double		bon_blunt = 0;					//	Blunt 		(physical)

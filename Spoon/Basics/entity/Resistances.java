@@ -30,8 +30,72 @@ public class Resistances {
     	setResistances	( blunt_n , piercing_n , slashing_n , fire_n , frost_n , shock_n , poison_n , light_n , dark_n );
     }
 //getMethods
-
     
+    //	Index Number of Type by Name
+    public int			getTypeId	( String resistance_type_name )
+    {
+
+    	int	resistance_type_id = 0;
+    	if(resistance_type_name.equals("Blunt") || resistance_type_name.equals("blunt"))
+    	{
+    		resistance_type_id = 0;
+    	}
+    	if(resistance_type_name.equals("Piercing") || resistance_type_name.equals("piercing"))
+    	{
+    		resistance_type_id = 1;
+    	}
+    	if(resistance_type_name.equals("Slashing") || resistance_type_name.equals("slashing"))
+    	{
+    		resistance_type_id = 2;
+    	}
+    	if(resistance_type_name.equals("Fire") || resistance_type_name.equals("fire"))
+    	{
+    		resistance_type_id = 3;
+    	}
+    	if(resistance_type_name.equals("Frost") || resistance_type_name.equals("frost"))
+    	{
+    		resistance_type_id = 4;
+    	}
+    	if(resistance_type_name.equals("Shock") || resistance_type_name.equals("shock"))
+    	{
+    		resistance_type_id = 5;
+    	}
+    	if(resistance_type_name.equals("Poison") || resistance_type_name.equals("poison"))
+    	{
+    		resistance_type_id = 6;
+    	}
+    	if(resistance_type_name.equals("Light") || resistance_type_name.equals("light"))
+    	{
+    		resistance_type_id = 7;
+    	}
+    	if(resistance_type_name.equals("Dark") || resistance_type_name.equals("dark"))
+    	{
+    		resistance_type_id = 8;
+    	}
+    	return resistance_type_id;
+    	
+    }
+    
+    //	Type Name by Index Number
+    public String		getTypeName	( int resistance_type_id )
+    {
+    	String	resistance_type_name = "";
+    	switch(resistance_type_id)
+    	{
+    	case	0:	resistance_type_name = "blunt";		break;
+    	case	1:	resistance_type_name = "piercing";	break;
+    	case	2:	resistance_type_name = "slashing"; 	break;
+    	case	3:	resistance_type_name = "fire";	 	break;
+    	case	4:	resistance_type_name = "frost"; 	break;
+    	case	5:	resistance_type_name = "shock"; 	break;
+    	case	6:	resistance_type_name = "poison"; 	break;
+    	case	7:	resistance_type_name = "light"; 	break;
+    	case	8:	resistance_type_name = "dark";	 	break;
+    	default:	resistance_type_name = "unknown";	break;
+    	}
+    	return	resistance_type_name;
+    }
+
     //	All
     public double[] 	getResistances()
     {
@@ -50,6 +114,20 @@ public class Resistances {
     	return	resistances;
     }
     	
+    //	Variable by type index
+    public double		getResistance(int resistance_type_id)
+    {
+    	double 	resistance = getResistances()[resistance_type_id];
+    	return 	resistance;
+    }
+    
+    //	Variable by type name
+    public double		getResistance(String resistance_type_name)
+    {
+    	double	resistance = getResistance(getTypeId(resistance_type_name));
+    	return 	resistance;
+    }
+    
     //	Blunt
     public double 		getBlunt() 
     {
