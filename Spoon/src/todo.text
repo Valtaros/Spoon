@@ -16,5 +16,63 @@ Basics.entity
 	+	add constructors for random generation
 		+	all
 		+	some(specific)
-		
 	
+	
+Entity
+	-Name
+	-Attributes
+	-Resistances
+	-Skills
+	-Abilities
+	-Spells
+	-Reputation
+	-Hit Points
+	-Magic Points
+	(-Stamina Points -> Race.BaseStamina )
+	-Size
+	-Sex
+	-Languages
+	-Attack Bonus
+	-Immunities 
+	(-Hunger/Thirst -> Race.(Metabolism/Diet) )
+	-Age
+
+	-Race
+		-Name
+		-Base Hitpoints
+		-Base Magicpoints
+		-Base Skills
+		-Base Resistances
+		-Base Attributes 
+		-Size category
+		-Base Spells
+		-Base Knowledge
+		-Base Languages
+		-Base Attack Bonus
+		-Base Immunities
+		-Mobility
+			-CanWalk
+			-CanClimb
+			-CanFly
+			-CanSwim
+			-Speed(s)
+		-Natural Body
+			-Head(s)
+			-Arm(s)
+			-Wing(s)
+			-Leg(s)
+			-Tail(s)
+			(-Tentacle(s) )
+			-Claws/Hands/Hoofs/etc.
+			-Natural Weapons
+			-Natural Armor
+			-Sizerange
+		-Age
+		-Diet
+
+
+Intelligent Entity 
+	-Entity
+	-Inventory
+	-Equipment 
+	-Knowledge 

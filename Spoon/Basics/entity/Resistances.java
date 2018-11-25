@@ -4,15 +4,15 @@ import entity.*;
 
 public class Resistances {
 //	Variables
-    private double		blunt = 0;					//	Blunt 		(physical)
-    private double		piercing = 0;				// 	Piercing 	(physical)
-    private double		slashing = 0;				//	Slashing 	(physical)
-    private double		fire = 0;					//	Fire		(elemental)
-    private double		frost = 0;					//	Frost		(elemental)
-    private double		shock = 0;					//	Shock		(elemental)
-    private double		poison = 0;					//	Poison		(elemental)
-    private double		light = 0;					//	Light		(elemental)
-    private double		dark = 0;					//	Dark		(elemental)
+    private double		blunt 		= 0;	//	Blunt 		(physical)
+    private double		piercing 	= 0;	// 	Piercing 	(physical)
+    private double		slashing 	= 0;	//	Slashing 	(physical)
+    private double		fire 		= 0;	//	Fire		(elemental)
+    private double		frost 		= 0;	//	Frost		(elemental)
+    private double		shock 		= 0;	//	Shock		(elemental)
+    private double		poison 		= 0;	//	Poison		(elemental)
+    private double		light 		= 0;	//	Light		(elemental)
+    private double		dark 		= 0;	//	Dark		(elemental)
 
 //	Constructors
     //	Empty	(all 0)
@@ -36,42 +36,30 @@ public class Resistances {
     {
 
     	int	resistance_type_id = 0;
-    	if(resistance_type_name.equals("Blunt") || resistance_type_name.equals("blunt"))
+    	
+    	switch(resistance_type_name)
     	{
-    		resistance_type_id = 0;
+    	case	"Blunt"		:
+    	case	"blunt"		:	resistance_type_id = 0; break;
+    	case	"Piercing"	:
+    	case	"piercing"	:	resistance_type_id = 1; break;
+    	case	"Slashing"	:
+    	case	"slashing"	:	resistance_type_id = 2; break;
+    	case	"Fire"		:
+    	case	"fire"		:	resistance_type_id = 3; break;
+    	case	"Frost"		:
+    	case	"frost"		:	resistance_type_id = 4; break;
+    	case	"Shock"		:
+    	case	"shock"		:	resistance_type_id = 5; break;
+    	case	"Poison"	:
+    	case	"poison"	:	resistance_type_id = 6; break;
+    	case	"Light"		:
+    	case	"light"		:	resistance_type_id = 7; break;
+    	case	"Dark"		:
+    	case	"dark"		:	resistance_type_id = 8; break;
+    	default				:	break;
     	}
-    	if(resistance_type_name.equals("Piercing") || resistance_type_name.equals("piercing"))
-    	{
-    		resistance_type_id = 1;
-    	}
-    	if(resistance_type_name.equals("Slashing") || resistance_type_name.equals("slashing"))
-    	{
-    		resistance_type_id = 2;
-    	}
-    	if(resistance_type_name.equals("Fire") || resistance_type_name.equals("fire"))
-    	{
-    		resistance_type_id = 3;
-    	}
-    	if(resistance_type_name.equals("Frost") || resistance_type_name.equals("frost"))
-    	{
-    		resistance_type_id = 4;
-    	}
-    	if(resistance_type_name.equals("Shock") || resistance_type_name.equals("shock"))
-    	{
-    		resistance_type_id = 5;
-    	}
-    	if(resistance_type_name.equals("Poison") || resistance_type_name.equals("poison"))
-    	{
-    		resistance_type_id = 6;
-    	}
-    	if(resistance_type_name.equals("Light") || resistance_type_name.equals("light"))
-    	{
-    		resistance_type_id = 7;
-    	}
-    	if(resistance_type_name.equals("Dark") || resistance_type_name.equals("dark"))
-    	{
-    		resistance_type_id = 8;
-    	}
+    	
     	return resistance_type_id;
     	
     }
