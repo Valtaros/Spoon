@@ -34,8 +34,6 @@
 
 package entity;
 
-import	entity.*;
-
 public class Race {
 	private	String		name;				//	Name
 	private int			hp_base;			//	Base Hitpoints

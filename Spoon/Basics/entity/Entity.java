@@ -2,8 +2,7 @@
 
 package entity;
 
-import entity.*;
-import java.util.Random;
+//import entity.*;
 
 /* abstract ? */ public class Entity {
     
